@@ -1,0 +1,42 @@
+def calculate():
+    while True:
+        print("Добро пожаловать! Это простой калькулятор на Python. \n"
+              "Для начала работы нажмите 1 \n"
+              "Для выхода нажмите 2\n")
+        action = input("Действие: ")
+
+        if action == "2":
+            print("Вы завершили работу. До скорой встречи!")
+            break
+
+        try:
+            digit_1 = int(input("Введите ПЕРВОЕ число: "))
+            action = input("Введите действие (*, /, + или -): ")
+            digit_2 = int(input("Введите ВТОРОЕ число: "))
+            red_line = "\n" + '-' * 30
+            if action == "+":
+                print("Ваша сумма =", int(digit_1) + int(digit_2), red_line)
+            elif action == "-":
+                print("Ваша разность =", int(digit_1) - int(digit_2), red_line)
+            elif action == "*":
+                print("Ваше произведение =", int(digit_1) * int(digit_2), red_line)
+            elif action == "/":
+                try:
+                    division = digit_1 / digit_2
+                except ZeroDivisionError:
+                    division = 0
+                    print("На 0 делить нельзя. Попробуйте снова", red_line)
+                else:
+                    print("Ваше частное =", int(digit_1) / int(digit_2), red_line)
+            else:
+                print("Неверное действие, выберите действие из предложенного списка: *, /, + или -", red_line)
+        except:
+            print('Введено нечисловое значение. Попытайтесь снова\n')
+        again()
+
+
+def again():
+    calculate()
+
+
+calculate()
